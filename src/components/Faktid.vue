@@ -4,7 +4,7 @@
     <p>Huvitavad faktid numbrite kohta</p>
     <input type="number" min="0" v-model="number">
     <input type="number" min="0" v-model="increment">
-    <p v-for="value in data" :key="index"</p>
+    <p v-for="value in data">{{ value }}</p>
   </div>
 </template>
 
@@ -30,29 +30,13 @@ export default {
   },
   methods: { 
     getFact () {
-      /*if (this.number !== '') {
-        let url = `http://numbersapi.com/${this.number}`
-        
-        axios.get(url)
-          .then(response => {
-            this.data = response.data
-          })
-          .catch(error => {
-            console.log(error)
-        })
-      }*/
+     
       if (this.number !== '' && this.increment !== '') {
         let url = `http://numbersapi.com/${this.number}..${parseInt(this.number) + parseInt(this.increment)}`
 
       axios.get(url)
           .then(response => {
-            console.log(response.data)
-            /*for(let item in response.data) {
-                console.log(item);
-                let li = document.createElement('li');
-                li.innerText = response.data[item];
-                this.data.appendChild(li)
-            }*/
+            //console.log(response.data)
             this.data = response.data
           })
           .catch(error => {
